@@ -1,28 +1,14 @@
-let { makeExecutableSchema, addMockFunctionsToSchema } = require("graphql-tools");
-let resolvers = require("./resolvers");
+const { gql } = require('apollo-server-express');
 
-const typeDefs = `
+const typeDefs = gql`
 type Query {
-  author(firstName: String, lastName: String): Author
-  allAuthors: [Author]
+  allTask: [Task]
 }
 
-type Author {
+type Task {
   id: Int
-  firstName: String
-  lastName: String
-  posts: [Post]
-}
-
-type Post {
-  id: Int
-  title: String
-  text: String
-  views: Int
-  author: Author
+  taskName: String
 }
 `;
 
-const schema = makeExecutableSchema({ typeDefs, resolvers });
-
-module.exports = schema;
+module.exports = typeDefs;

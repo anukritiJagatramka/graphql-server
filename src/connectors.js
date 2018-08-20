@@ -7,18 +7,21 @@ const db = new Sequelize('blog', null, null, {
   storage: './blog.sqlite',
 });
 
-const AuthorModel = db.define('author', {
-  firstName: { type: Sequelize.STRING },
-  lastName: { type: Sequelize.STRING },
-});
+const TaskModel = db.define('task',{
+  taskName: {type: Sequelize.STRING}
+})
+// const AuthorModel = db.define('author', {
+//   firstName: { type: Sequelize.STRING },
+//   lastName: { type: Sequelize.STRING },
+// });
 
-const PostModel = db.define('post', {
-  title: { type: Sequelize.STRING },
-  text: { type: Sequelize.STRING },
-});
+// const PostModel = db.define('post', {
+//   title: { type: Sequelize.STRING },
+//   text: { type: Sequelize.STRING },
+// });
 
-AuthorModel.hasMany(PostModel);
-PostModel.belongsTo(AuthorModel);
+// AuthorModel.hasMany(PostModel);
+// PostModel.belongsTo(AuthorModel);
 
 // One-time: create mock data with a seed, so we always get the same
 // casual.seed(88);
@@ -36,7 +39,7 @@ PostModel.belongsTo(AuthorModel);
 //   });
 // });
 
-const Author = db.models.author;
-const Post = db.models.post;
-
-module.exports = { Author, Post };
+// const Author = db.models.author;
+// const Post = db.models.post;
+const Task = db.models.task;
+module.exports = { Task };
